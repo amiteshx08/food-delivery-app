@@ -6,7 +6,7 @@
     <title>Food-Delivery</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-      body{
+      body {
         font-family: Montserrat;
         font-size: x-large;
       }
@@ -14,12 +14,18 @@
   </head>
   <body>
     <div class="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
     <script>
-      const heading = document.createElement("h1");
-      heading.innerHTML = "Welcome to Food-Delivery";
-
-      const root = document.querySelector(".root");
-      root.appendChild(heading);
+        const heading = React.createElement('h1', {}, 'Welcome to Food-Delivery!!')
+        const root = ReactDOM.createRoot(document.querySelector('.root'))
+        root.render(heading)
     </script>
   </body>
 </html>
