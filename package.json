@@ -1,0 +1,32 @@
+{
+  "name": "food-delivery",
+  "version": "1.0.0",
+  "description": "This is a compilation of my react learning journey",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amiteshx08/food-delivery-app.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "amitesh"
+  ],
+  "author": "Amitesh Harsh Lal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amiteshx08/food-delivery-app/issues"
+  },
+  "homepage": "https://github.com/amiteshx08/food-delivery-app#readme",
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

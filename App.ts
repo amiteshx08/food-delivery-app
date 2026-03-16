@@ -1,5 +1,5 @@
-declare var React: any;
-declare var ReactDOM: any;
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 // const heading = React.createElement(
 //     "h1", 
@@ -18,8 +18,7 @@ const parent = React.createElement('div', {id:'parent'}, [
     ])
 ])
 console.log(parent)
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(parent);
-
-export {}
+export default {}
