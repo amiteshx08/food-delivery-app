@@ -1,7 +1,11 @@
 body {
   font-family: Montserrat;
+  color: aquamarine;
 }
-/* 
-#heading{
-    color: rebeccapurple;
-} */
+
+.header{
+  color: brown;
+}
+.title{
+  color: darkorange;
+}

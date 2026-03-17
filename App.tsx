@@ -1,24 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// const heading = React.createElement(
-//     "h1", 
-//     {id: "heading"}, 
-//     "Welcome to Food-Delivery!!"
-// );
+const Title = () => {
+  return <h2 className="title">Food is arriving!</h2>;
+};
 
-const parent = React.createElement('div', {id:'parent'}, [
-    React.createElement('div', {id: 'child1'}, [
-        React.createElement('h1', {}, 'I am an h1 tag'),
-        React.createElement('h2', {}, 'I am an h2 tag')
-    ]),
-    React.createElement('div', {id: 'child2'}, [
-        React.createElement('h1', {}, 'I am an h1 tag'),
-        React.createElement('h2', {}, 'I am an h2 tag')
-    ])
-])
-console.log(parent)
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const Heading = () => {
+  return (
+    <div>
+      <h1 className="header">Food Delivery</h1>
+      <Title />
+    </div>
+  );
+};
 
-root.render(parent);
-export default {}
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement,
+);
+root.render(<Heading />);

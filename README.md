@@ -1,0 +1,17 @@
+# Parcel Powers
+- hot module replacement
+- minification
+- bundling
+- differential bundling - supports older browsers
+- image optimisation
+- dev build
+- local server
+- compress
+- consistent hashing
+- code splitting
+- diagnostic
+- error handling
+- tree shaking - removes unused code
+- caching - faster builds
+- file watching algorithm
+- HTTPs

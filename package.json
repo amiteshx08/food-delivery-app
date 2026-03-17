@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "This is a compilation of my react learning journey",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -21,7 +23,6 @@
   },
   "homepage": "https://github.com/amiteshx08/food-delivery-app#readme",
   "devDependencies": {
-    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "parcel": "^2.16.4"
   },
