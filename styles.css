@@ -54,7 +54,7 @@ body {
 }
 
 .filter-btn{
-  margin: 10px;
+  margin: 15px;
 }
 
 .shimmer-container{
@@ -73,5 +73,8 @@ body {
 }
 .login-logout-btn {
   margin: 20px;
-  
+}
+
+.filter{
+  display: flex;
 }
