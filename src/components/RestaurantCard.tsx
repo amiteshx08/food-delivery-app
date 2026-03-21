@@ -3,6 +3,7 @@ import { CDN_URL } from "../utils/constant";
 interface RestaurantInfo {
   resData: {
     info: {
+      id: string;
       name: string;
       cuisines: string[];
       avgRating: number;
