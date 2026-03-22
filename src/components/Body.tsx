@@ -39,8 +39,9 @@ const Body = () => {
     );
   };
 
-  if (listofrestaurants.length === 0) return <Shimmer />;
-  return (
+  return listofrestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <div className="search">
@@ -67,7 +68,7 @@ const Body = () => {
             const filteredList = listofrestaurants.filter(
               (res) => res.info.avgRating > 4.5,
             );
-            setListOfRestaurants(filteredList);
+            setFilteredRestaurant(filteredList);
           }}
         >
           Top Rated Restaurants

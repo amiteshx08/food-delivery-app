@@ -15,3 +15,7 @@
 - caching - faster builds
 - file watching algorithm
 - HTTPs
+
+# two types of routing
+- client side routing 
+- server side routing
