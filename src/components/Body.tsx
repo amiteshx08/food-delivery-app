@@ -28,14 +28,14 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.2379843&lng=73.2029272&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+      "https://foodfire.onrender.com/api/restaurants?lat=22.246885&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING",
     );
     const json = await data.json();
     setListOfRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants,
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants,
     );
     setFilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants,
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants,
     );
   };
 

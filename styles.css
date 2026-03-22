@@ -78,3 +78,13 @@ body {
 .filter{
   display: flex;
 }
+
+.menu-details{
+  margin: 10px;
+}
+.menu-details > ul {
+  padding: 0px;
+}
+.menu-details > ul > li {
+  list-style-type: none;
+}

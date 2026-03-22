@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+interface RestaurantDetails {
+  id: string;
+  name: string;
+  avgRating: number;
+  costForTwoMessage: string;
+}
+
+interface MenuInfo {
+  id: string;
+  name: string;
+  category: string;
+}
+const RestaurantMenu = () => {
+  const [resDetail, setResDetail] = useState<RestaurantDetails | null>(null);
+  const [menuList, setMenuList] = useState<MenuInfo[]>([]);
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
+  const fetchMenu = async () => {
+    const data = await fetch(
+      "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=22.246885&lng=72.83106070000001&&submitAction=ENTER&restaurantId=72605",
+    );
+    const json = await data.json();
+    const items =
+      json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
+        .itemCards;
+    setResDetail(json.data.cards[2].card.card.info);
+    setMenuList(items.map((item: any) => item.card.info));
+  };
+  if (menuList.length === 0) return <Shimmer />;
+
+  return (
+    <div className="menu-details">
+      <h1>{resDetail?.name}</h1>
+      <p>{resDetail?.costForTwoMessage}</p>
+      <p>{resDetail?.avgRating} Stars</p>
+      <ul>
+        {menuList.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default RestaurantMenu;
