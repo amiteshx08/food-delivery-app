@@ -88,3 +88,12 @@ body {
 .menu-details > ul > li {
   list-style-type: none;
 }
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+.user-details{
+  border: 2px solid black;
+  margin-bottom: 2px;
+}
