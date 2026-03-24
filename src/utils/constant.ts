@@ -6,3 +6,6 @@ export const CDN_URL =
 
 export const MENU_API =
   "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=22.246885&lng=72.83106070000001&submitAction=ENTER&restaurantId=";
+
+export const RESTAURANT_API =
+  "https://foodfire.onrender.com/api/restaurants?lat=22.246885&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";

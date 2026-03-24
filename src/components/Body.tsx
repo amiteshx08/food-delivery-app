@@ -1,44 +1,19 @@
-import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
-
-interface RestaurantInfo {
-  info: {
-    id: string;
-    name: string;
-    cuisines: string[];
-    avgRating: number;
-    cloudinaryImageId: string;
-  };
-}
+import { RESTAURANT_API } from "../utils/constant";
+import useRestaurantData from "../utils/useRestaurantData";
 
 const Body = () => {
-  const [listofrestaurants, setListOfRestaurants] = useState<RestaurantInfo[]>(
-    [],
-  );
-  const [filteredRestaurant, setFilteredRestaurant] = useState<
-    RestaurantInfo[]
-  >([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://foodfire.onrender.com/api/restaurants?lat=22.246885&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING",
-    );
-    const json = await data.json();
-    setListOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants,
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants,
-    );
-  };
+  const {
+    listofrestaurants,
+    filteredRestaurant,
+    setListOfRestaurants,
+    setFilteredRestaurant,
+  } = useRestaurantData();
 
   return listofrestaurants.length === 0 ? (
     <Shimmer />
@@ -77,7 +52,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
