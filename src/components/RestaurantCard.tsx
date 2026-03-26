@@ -14,18 +14,18 @@ interface RestaurantInfo {
 const RestaurantCard = (props: RestaurantInfo) => {
   const { name, cuisines, avgRating, cloudinaryImageId } = props.resData.info;
   return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+    <div className="w-65 h-100 p-1.75 m-1.75 border bg-amber-100">
         <img
-          className="res-logo"
+          className="w-[inherit] h-[65%]"
           alt="restaurant image"
           src={
             CDN_URL +
             cloudinaryImageId
           }
         />
-        <h3>{name}</h3>
-        <p>{cuisines.join(", ")}</p>
-        <p>{avgRating} Stars</p>
+        <h3 className="font-bold m-0 p-0">{name}</h3>
+        <p className="font-medium">{cuisines.join(", ")}</p>
+        <p>{avgRating} 🌟</p>
     </div>
   );
 };

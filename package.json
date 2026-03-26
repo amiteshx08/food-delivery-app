@@ -24,9 +24,12 @@
   "homepage": "https://github.com/amiteshx08/food-delivery-app#readme",
   "devDependencies": {
     "@types/react-dom": "^19.2.3",
-    "parcel": "^2.16.4"
+    "parcel": "^2.16.4",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1"
