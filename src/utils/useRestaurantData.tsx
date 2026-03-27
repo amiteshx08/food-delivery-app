@@ -9,6 +9,7 @@ interface RestaurantInfo {
     cuisines: string[];
     avgRating: number;
     cloudinaryImageId: string;
+    isOpen: boolean;
   };
 }
 
@@ -37,7 +38,7 @@ const useRestaurantData = () => {
     );
   };
 
-  return {listofrestaurants, filteredRestaurant, setListOfRestaurants, setFilteredRestaurant};
+  return {listofrestaurants, filteredRestaurant, setFilteredRestaurant};
 };
 
 

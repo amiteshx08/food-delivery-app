@@ -1,5 +1,5 @@
-import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import RestaurantCard, { withOpenLabel } from "./RestaurantCard";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useRestaurantData from "../utils/useRestaurantData";
@@ -7,17 +7,14 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
+  const RestaurantCardOpen = withOpenLabel(RestaurantCard);
 
-  const {
-    listofrestaurants,
-    filteredRestaurant,
-    setListOfRestaurants,
-    setFilteredRestaurant,
-  } = useRestaurantData();
+  const { listofrestaurants, filteredRestaurant, setFilteredRestaurant } =
+    useRestaurantData();
 
-  const status = useOnlineStatus()
+  const status = useOnlineStatus();
 
-  if(!status) return <h1>Opps!! looks like you are offline</h1>
+  if (!status) return <h1>Opps!! looks like you are offline</h1>;
 
   return listofrestaurants.length === 0 ? (
     <Shimmer />
@@ -61,7 +58,14 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {
+              // Logic
+              restaurant.info.isOpen ? (
+                <RestaurantCardOpen resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )
+            }
           </Link>
         ))}
       </div>
