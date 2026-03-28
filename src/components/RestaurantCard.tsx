@@ -12,6 +12,7 @@ interface RestaurantInfo {
     };
   };
 }
+
 const RestaurantCard = (props: RestaurantInfo) => {
   const { name, cuisines, avgRating, cloudinaryImageId } = props.resData.info;
   return (
@@ -27,6 +28,7 @@ const RestaurantCard = (props: RestaurantInfo) => {
     </div>
   );
 };
+
 export const withOpenLabel = (
   RestaurantCard: ComponentType<RestaurantInfo>,
 ) => {
