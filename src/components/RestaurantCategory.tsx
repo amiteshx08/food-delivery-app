@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }: any) => {
+const RestaurantCategory = ({ data, showItems, setShowIndex }: any) => {
   //Destructuring title and itemCards
   const { title, itemCards } = data;
-  const [showItems, setShowItems] = useState(false)
+ 
   const handleClick = () => {
-    setShowItems(!showItems)
+    setShowIndex()
   }
   return (
     <div>
@@ -22,7 +22,7 @@ const RestaurantCategory = ({ data }: any) => {
           <span>⬇️</span>
         </div>
         {/*Passing only the itemCards array to ItemList*/}
-        {showItems && itemCards && <ItemList items={itemCards} />}
+        { showItems && itemCards && <ItemList items={itemCards} />}
       </div>
     </div>
   );
