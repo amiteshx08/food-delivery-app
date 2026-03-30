@@ -52,7 +52,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="flex flex-wrap justify-around gap-5">
+      <div className="grid grid-cols-4 gap-3 px-17 py-4">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}

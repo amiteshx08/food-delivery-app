@@ -6,7 +6,8 @@ import { useParams } from "react-router";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const { menuItems, resDetail, otherMenu } = useRestaurantMenu(resId);
+  const { resDetail, otherMenu } = useRestaurantMenu(resId);
+  
   const [showIndex, setShowIndex] = useState<number | null>(null);
   //Filtering otherMenu
   const categories = otherMenu?.filter(
@@ -18,7 +19,7 @@ const RestaurantMenu = () => {
   );
   // console.log(categories);
 
-  if (menuItems.length === 0) return <Shimmer />;
+  if (otherMenu.length === 0) return <Shimmer />;
 
   return (
     <div className="m-2.5 text-center">
