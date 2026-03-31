@@ -20,28 +20,32 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex justify-center">
-        <div className="m-3.75">
+      <div className="flex items-center justify-center gap-3 my-6">
+        <div className="flex items-center border border-gray-200 rounded-full shadow-sm overflow-hidden px-4 py-2 bg-white w-80">
+          <span className="text-gray-400 mr-2">🔍</span>
           <input
             type="text"
-            className="p-1.5 border-2 border-gray-300 rounded-lg outline-none"
+            placeholder="Search for restaurants..."
+            className="outline-none text-sm text-gray-700 w-full bg-transparent"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button
-            className="bg-green-700 text-amber-400 p-1.5 m-0.5 font-medium rounded-md"
-            onClick={() => {
-              const filteredRestaurant = listofrestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase()),
-              );
-              setFilteredRestaurant(filteredRestaurant);
-            }}
-          >
-            Search
-          </button>
         </div>
+
         <button
-          className="m-3.75 p-0.5 bg-green-700 text-amber-400 rounded-md font-medium"
+          className="px-5 py-2 bg-black text-white text-sm font-semibold rounded-full hover:bg-gray-800 transition-all duration-200"
+          onClick={() => {
+            const filteredRestaurant = listofrestaurants.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase()),
+            );
+            setFilteredRestaurant(filteredRestaurant);
+          }}
+        >
+          Search
+        </button>
+
+        <button
+          className="px-5 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded-full hover:bg-gray-100 transition-all duration-200"
           onClick={() => {
             const filteredList = listofrestaurants.filter(
               (res) => res.info.avgRating > 4.5,
@@ -49,7 +53,7 @@ const Body = () => {
             setFilteredRestaurant(filteredList);
           }}
         >
-          Top Rated Restaurants
+          ⭐ Top Rated
         </button>
       </div>
       <div className="grid grid-cols-4 gap-3 px-17 py-4">
