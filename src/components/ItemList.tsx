@@ -5,7 +5,7 @@ const ItemList = ({ items }: any) => {
       {items.map((item: any, index: number) => (
         <div
           key={`${item.card.info.imageId}-${index}`}
-          className="p-2 mx-2 border-gray-200 border-b-2 text-left flex justify-between"
+          className="p-2 mx-2 border-gray-200 border-b text-left flex justify-between"
         >
           <div className="w-9/12">
             <div className="">

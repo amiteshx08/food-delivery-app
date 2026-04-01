@@ -6,20 +6,21 @@ import { useParams } from "react-router";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const { resDetail, otherMenu } = useRestaurantMenu(resId);
-  
+  const { resDetail, wholeMenu } = useRestaurantMenu(resId);
+  //For Accordion UI Logic
   const [showIndex, setShowIndex] = useState<number | null>(null);
-  //Filtering otherMenu
-  const categories = otherMenu?.filter(
+
+  //Filtering wholeMenu[] (cards[]) based on the type.
+  const categories = wholeMenu?.filter(
     (c: any) =>
       c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
       c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory",
   );
-  // console.log(categories);
+  
 
-  if (otherMenu.length === 0) return <Shimmer />;
+  if (wholeMenu.length === 0) return <Shimmer />;
 
   return (
     <div className="m-2.5 text-center">
@@ -32,7 +33,7 @@ const RestaurantMenu = () => {
           key={category?.card?.card?.categoryId}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
         />
       ))}
     </div>

@@ -1,27 +1,47 @@
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({ data, showItems, setShowIndex }: any) => {
-  //Destructuring title and itemCards
-  const { title, itemCards } = data;
- 
+  //Destructure essentials from data
+  const { title, itemCards, categories } = data;
+
   const handleClick = () => {
-    setShowIndex()
-  }
+    setShowIndex();
+  };
+
   return (
     <div>
-      <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
+      <div className="mx-auto my-4 w-6/12 bg-gray-50 p-4 shadow-lg">
+        {/* Header Section */}
         <div
-          className="flex justify-between cursor-pointer"
+          className="flex cursor-pointer justify-between"
           onClick={handleClick}
         >
-          <span className="font-bold text-lg">
+          <span className="text-lg font-bold">
             {title}
-            {itemCards?.length ? `(${itemCards.length})` : ""}
+            {/* If it's a flat category, show length. If nested, you might want to sum all itemCards in all categories */}
+            {itemCards?.length ? ` (${itemCards.length})` : ""}
           </span>
-          <span>⬇️</span>
+          <span>{showItems ? "⬆️" : "⬇️"}</span>
         </div>
-        {/*Passing only the itemCards array to ItemList*/}
-        { showItems && itemCards && <ItemList items={itemCards} />}
+
+        {/* Conditional Rendering Logic */}
+        {showItems && (
+          <div className="mt-4">
+            {/* Case A: It's a standard Category with direct itemCards */}
+            {itemCards && <ItemList items={itemCards} />}
+
+            {/* Case B: It's a NestedCategory with sub-categories */}
+            {categories &&
+              categories.map((subCategory: any) => (
+                <div key={subCategory.title} className="mb-6 last:mb-0">
+                  <h4 className="border-b border-gray-200 pb-2 text-sm font-semibold text-gray-700">
+                    {subCategory.title} ({subCategory.itemCards?.length})
+                  </h4>
+                  <ItemList items={subCategory.itemCards} />
+                </div>
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

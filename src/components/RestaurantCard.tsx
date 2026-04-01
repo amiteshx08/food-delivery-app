@@ -19,14 +19,14 @@ const RestaurantCard = (props: RestaurantInfo) => {
     <div className="w-64 cursor-pointer">
       <div className="relative">
         <img
-          className="w-70.25 h-50 object-cover rounded-2xl"
+          className="h-50 w-70.25 rounded-2xl object-cover"
           alt="restaurant image"
           src={CDN_URL + cloudinaryImageId}
         />
       </div>
       <div className="p-2">
-        <h3 className="font-bold text-lg">{name}</h3>
-        <p className="text-gray-500 text-sm">{cuisines.join(", ")}</p>
+        <h3 className="text-lg font-bold">{name}</h3>
+        <p className="text-sm text-gray-500">{cuisines.join(", ")}</p>
         <p className="text-sm text-gray-500">{avgRating} 🌟</p>
       </div>
     </div>
@@ -38,8 +38,8 @@ export const withOpenLabel = (
 ) => {
   return (props: RestaurantInfo) => {
     return (
-      <div>
-        <label className="m-0.5 p-0.5 absolute bg-black text-cyan-50 rounded-lg ">
+      <div className="relative">
+        <label className="absolute top-1 left-1 z-10 rounded-full bg-gray-950/85 px-2.5 py-1 text-xs font-semibold tracking-wide text-white shadow-lg">
           Open
         </label>
         <RestaurantCard {...props} />

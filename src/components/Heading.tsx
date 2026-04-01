@@ -7,10 +7,10 @@ const Heading = () => {
   const [btnName, setbtnName] = useState("Login");
   const status = useOnlineStatus();
   return (
-    <div className="flex justify-between items-center px-8 py-4 bg-white shadow-md sticky top-0 z-50">
+    <div className="flex justify-between items-center px-6 bg-white shadow-md sticky top-0 z-50">
       {/* Logo */}
       <div>
-        <img className="w-16 h-16 object-contain" src={LOGO_URL} />
+        <img className="w-20 h-20 object-contain" src={LOGO_URL} />
       </div>
 
       {/* Nav Links */}

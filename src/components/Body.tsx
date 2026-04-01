@@ -5,9 +5,9 @@ import { Link } from "react-router";
 import useRestaurantData from "../utils/useRestaurantData";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
+const RestaurantCardOpen = withOpenLabel(RestaurantCard);
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const RestaurantCardOpen = withOpenLabel(RestaurantCard);
 
   const { listofrestaurants, filteredRestaurant, setFilteredRestaurant } =
     useRestaurantData();
@@ -20,20 +20,20 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex items-center justify-center gap-3 my-6">
-        <div className="flex items-center border border-gray-200 rounded-full shadow-sm overflow-hidden px-4 py-2 bg-white w-80">
-          <span className="text-gray-400 mr-2">🔍</span>
+      <div className="my-6 flex items-center justify-center gap-3">
+        <div className="flex w-80 items-center overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-2 shadow-sm">
+          <span className="mr-2 text-gray-400">🔍</span>
           <input
             type="text"
             placeholder="Search for restaurants..."
-            className="outline-none text-sm text-gray-700 w-full bg-transparent"
+            className="w-full bg-transparent text-sm text-gray-700 outline-none"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
 
         <button
-          className="px-5 py-2 bg-black text-white text-sm font-semibold rounded-full hover:bg-gray-800 transition-all duration-200"
+          className="rounded-full bg-black px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-gray-800"
           onClick={() => {
             const filteredRestaurant = listofrestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -45,7 +45,7 @@ const Body = () => {
         </button>
 
         <button
-          className="px-5 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded-full hover:bg-gray-100 transition-all duration-200"
+          className="rounded-full border border-gray-300 px-5 py-2 text-sm font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100"
           onClick={() => {
             const filteredList = listofrestaurants.filter(
               (res) => res.info.avgRating > 4.5,
