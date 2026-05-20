@@ -21,31 +21,37 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="my-6 flex items-center justify-center gap-3">
-        <div className="flex w-80 items-center overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-2 shadow-sm">
+        <div className="flex w-80 items-center 
+        overflow-hidden rounded-full border
+         border-gray-200 bg-white
+          px-4 py-2 shadow-sm">
           <span className="mr-2 text-gray-400">🔍</span>
           <input
             type="text"
             placeholder="Search for restaurants..."
             className="w-full bg-transparent text-sm text-gray-700 outline-none"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => {
+              const currentQuery = e.target.value; 
+              setSearchText(currentQuery); 
+              if(currentQuery.trim() === "")  {
+                setFilteredRestaurant(listofrestaurants); 
+                return;
+              }
+              const filteredRestaurant = listofrestaurants.filter((res) => 
+              res.info.name.toLowerCase().includes(currentQuery.toLowerCase()),
+            );
+  
+            setFilteredRestaurant(filteredRestaurant); //Automatic Batching 
+            }}
           />
         </div>
-
+        
         <button
-          className="rounded-full bg-black px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-gray-800"
-          onClick={() => {
-            const filteredRestaurant = listofrestaurants.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase()),
-            );
-            setFilteredRestaurant(filteredRestaurant);
-          }}
-        >
-          Search
-        </button>
-
-        <button
-          className="rounded-full border border-gray-300 px-5 py-2 text-sm font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100"
+          className="rounded-full border
+           border-gray-300 px-5 py-2
+            text-sm font-semibold text-gray-700
+             transition-all duration-200 hover:bg-gray-100"
           onClick={() => {
             const filteredList = listofrestaurants.filter(
               (res) => res.info.avgRating > 4.5,
